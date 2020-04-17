@@ -21,11 +21,14 @@ $('#submitZipcode').on('click', function(){
         };
 
             $.each(cityWeather, function(key, val){
-                console.log(key);
-                console.log(val);
+                // console.log(key);
+                // console.log(val);
+                let li = $('<br><li></li>');
+                let value = li.append(val);
+                $('#displayJsTime').append(value);
+                
             })
-        console.log(cityWeather);
-        $('#displayJsTime').append(cityWeather.name)
+        // console.log(cityWeather);
         // .append('Welcome to ' + currentName + '<br>')
         // .append('where the current temperature is ' + convertedTempToFahrenheit+ 'degress F' + '<br>')
         // .append(currentWeather);
