@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js "> -->
     <link rel="stylesheet" href="css/style.css">
     <title>Weather App</title>
 </head>
@@ -11,10 +12,13 @@
     <h1>Welcome to Super Awesome Weather App</h1>
     <h3>Please add you zipcode and see your weather</h3>
 
-    <form action="">
-        <input type="text" id='zipcodeSubmit' placeholder="Zipcode" required>
-        <button type="submit" id="submitZipcode">Enter Zip</button>
-    </form>
+    <!-- <form action=""> -->
+        <input type="text" id='zipcodeSubmit' placeholder="Zipcode">
+        <button type="button" id="submitZipcode">Enter Zip</button>
+    <!-- </form> -->
+        <h4>Your current weather will show below</h4>
+    <ul id='displayJsTime'>
+    </ul>
 
 
 
