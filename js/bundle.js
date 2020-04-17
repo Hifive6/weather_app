@@ -11,6 +11,7 @@ var Moment = require('moment-timezone');
 $('#submitZipcode').on('click', function(){
     let zipcode = $('#zipcodeSubmit').val();
     $('#zipcodeSubmit').empty();
+    $('#displayJsTime').empty();
     
     $.get('https://api.openweathermap.org/data/2.5/weather?zip=' + zipcode + '&appid=' + key, function(response){
         console.log(response)
