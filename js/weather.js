@@ -14,14 +14,35 @@ $('#submitZipcode').on('click', function(){
     
     $.get('https://api.openweathermap.org/data/2.5/weather?zip=' + zipcode + '&appid=' + key, function(response){
         console.log(response)
-        let cityWeather = {
+
+        let city = {
             name: response.name,
             weather: response.weather[0].description,
-            temp: Math.floor((response.main.temp - 273.15) * (9/5) + 32),
-            // convertedTempToFahrenheit: Math.floor((temp - 273.15) * (9/5) + 32)
+            temp: Math.floor((response.main.temp - 273.15) * (9/5) + 32) + ' degrees',
+            lat: response.coord.lat,
+            lon: response.coord.lon
+
         };
+        $.get('http://api.openweathermap.org/data/2.5/onecall?lat=' + city.lat + '&lon=' + city.lon + '&appid=' + key,function(response){
+            // console.log(response.timezone);
+            let timeZone = response.timezone;
+            let time = new Moment();
+            let currentTime = time.tz(timeZone).format('hh:mm:ss a')
+            // console.log(currentTime);
+
+            let newDiv = $('<br>')
+            // let timeInTimeZone = newDiv.append(currentTime);
+            // console.log(timeInTimeZone)
+            $('#addTime').append(currentTime);
+            // let currentTimeInTimeZone = time.tz(name).format('hh:mm:ss a');
+            // console.log(currentTimeInTimeZone);
+            // }, 1000);
+            
+        })
         
-        $.each(cityWeather, function(key, val){
+        
+        
+        $.each(city, function(key, val){
             // console.log(key);
             // console.log(val);
             let li = $('<br><li></li>');
@@ -29,26 +50,24 @@ $('#submitZipcode').on('click', function(){
             $('#displayJsTime').append(value);
             
         })
-        // console.log(cityWeather);
-        // .append('Welcome to ' + currentName + '<br>')
-        // .append('where the current temperature is ' + convertedTempToFahrenheit+ 'degress F' + '<br>')
-        // .append(currentWeather);
-        
-        // let timeZone = response.timezone;
+    });
+    // convertedTempToFahrenheit: Math.floor((temp - 273.15) * (9/5) + 32)
+    // console.log(cityWeather);
+    // .append('Welcome to ' + currentName + '<br>')
+    // .append('where the current temperature is ' + convertedTempToFahrenheit+ 'degress F' + '<br>')
+    // .append(currentWeather);
+    
+    // let timeZone = response.timezone;
         // let name = response.name;
-        // let anyCity = moment.tz(mo)
-        // console.log(timeZone);
+        // let anyCity = ('America'/`${name}`);
+
+        // console.log(anyCity);
         // var a =  new Moment().tz(timeZone);
 
-        setInterval(function(){
-            let time = new Moment();
-            let currentTimeInTimeZone = time.tz('America/New_York').format('hh:mm:ss a');
-            console.log(currentTimeInTimeZone);
-        }, 1000);
+        // setInterval(function(){
 
 
         // console.log(a)
-    });
     
     
 
